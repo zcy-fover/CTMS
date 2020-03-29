@@ -1,0 +1,26 @@
+.error-box {
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-left: 5%;
+    margin-top: 5%;
+    padding-right: 5%;
+}
+
+.error-head > h2 {
+    display: table;
+    margin: 0 auto;
+    left: 0;
+    font-weight: 100;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 120px;
+}
+
+.error-body > * {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    display: table;
+    margin: 30px auto;
+    left: 0;
+}
+.error-body > p {
+    font-size: 15px;
+}

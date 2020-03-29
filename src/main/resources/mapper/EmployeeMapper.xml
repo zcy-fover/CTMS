@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.group.ctms.dao.EmployeeMapper">
+
+    <resultMap id="employeeResultMap" type="Employee">
+        <result property="employeeNum" column="employee_num"/>
+        <result property="employeeName" column="employee_name"/>
+        <result property="deptId" column="dept_id"/>
+        <result property="roleId" column="role_id"/>
+        <result property="isDelete" column="is_delete"/>
+    </resultMap>
+
+    <select id="findEmployeeById" resultMap="employeeResultMap" parameterType="int">
+        SELECT * FROM employee WHERE id = #{employeeNum} AND is_delete != 1
+    </select>
+
+    <select id="findEmployeeByNum" resultMap="employeeResultMap" parameterType="int">
+        SELECT * FROM employee WHERE employee_num = #{employeeNum} AND is_delete != 1
+    </select>
+
+    <select id="findEmployeeList" resultMap="employeeResultMap">
+        SELECT * FROM employee WHERE is_delete != 1
+    </select>
+
+    <select id="queryEmployeeList" resultMap="employeeResultMap" parameterType="Employee">
+        SELECT * FROM employee WHERE is_delete != 1
+        <if test="employeeNum != null">
+            AND employee_num = #{employeeNum}
+        </if>
+        <if test="deptId != null">
+            AND dept_id = #{deptId}
+        </if>
+    </select>
+
+    <insert id="addEmployee" parameterType="Employee">
+        INSERT INTO employee VALUES (
+            #{id, jdbcType=INTEGER},
+            #{employeeNum, jdbcType=INTEGER},
+            #{password, jdbcType=VARCHAR},
+            #{employeeName, jdbcType=VARCHAR},
+            #{deptId, jdbcType=INTEGER},
+            #{roleId, jdbcType=INTEGER},
+            #{isDelete, jdbcType=INTEGER}
+        )
+    </insert>
+
+    <update id="updateEmployee" parameterType="Employee">
+        UPDATE employee
+        <set>
+            <if test="password != null and password != ''">password = #{password},</if>
+            <if test="employeeName != null and employeeName != ''">employee_name = #{employeeName},</if>
+            <if test="deptId != null">dept_id = #{deptId},</if>
+            <if test="roleId != null">role_id = #{roleId},</if>
+            <if test="isDelete != null">is_delete = #{isDelete},</if>
+        </set>
+        WHERE id = #{id} or employee_num = #{employeeNum}
+    </update>
+
+    <update id="deleteEmployee" parameterType="int">
+        UPDATE employee
+        SET is_delete = 1
+        WHERE employee_num = #{employeeNum}
+    </update>
+</mapper>

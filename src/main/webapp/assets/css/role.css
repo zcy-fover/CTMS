@@ -1,0 +1,10 @@
+.role-box-body {
+    padding-top: 20px;
+    margin: 0 10% 0;
+    min-height: 250px;
+    padding-bottom: 20px;
+}
+
+.modal-content{
+    border-radius: 10px;
+}

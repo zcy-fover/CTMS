@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.group.ctms.dao.AuthorityMapper">
+    <resultMap id="authorityMap" type="Authority">
+        <result column="user_id" property="userId"/>
+        <result column="user_name" property="username"/>
+        <result column="user_role_id" property="userRoleId"/>
+        <result column="approval_order" property="approvalOrder"/>
+        <result column="approval_state" property="approvalState"/>
+        <result column="deleted_mark" property="deletedMark"/>
+    </resultMap>
+
+    <insert id="addApprover" parameterType="Authority">
+        INSERT INTO approval_authority (user_id, user_name, user_role_id, approval_order,
+          approval_state, deleted_mark)
+          VALUES (#{userId}, #{username}, #{userRoleId}, #{approvalOrder},
+          #{approvalState}, #{deletedMark})
+    </insert>
+
+    <update id="deleteApprover" parameterType="integer">
+        UPDATE approval_authority
+        SET deleted_mark = 1
+        WHERE id = #{id}
+    </update>
+
+    <select id="listAllAuthority" resultMap="authorityMap">
+        SELECT *
+        FROM approval_authority
+        WHERE deleted_mark = 0
+    </select>
+
+    <select id="findApproverById" resultMap="authorityMap" parameterType="int">
+        SELECT * FROM approval_authority WHERE id = #{id}
+    </select>
+
+    <select id="findApproverByUserId" resultMap="authorityMap" parameterType="int">
+        SELECT * FROM approval_authority WHERE user_id = #{userId}
+    </select>
+</mapper>

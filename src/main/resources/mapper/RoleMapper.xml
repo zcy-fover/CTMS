@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.group.ctms.dao.RoleMapper">
+    <resultMap id="roleMap" type="Role">
+        <result column="role_name" property="roleName"/>
+        <result column="role_num" property="roleNum"/>
+        <result column="role_desc" property="roleDesc"/>
+        <result column="deleted_mark" property="deletedMark"/>
+    </resultMap>
+
+    <!--添加角色-->
+    <insert id="addRole" parameterType="Role">
+        INSERT INTO role(role_name, role_num, role_desc, deleted_mark)
+        VALUES (#{roleName}, #{roleNum}, #{roleDesc}, #{deletedMark})
+    </insert>
+
+    <!--修改角色-->
+    <update id="reviseRole" parameterType="Role">
+        UPDATE role
+        <set>
+            <if test="roleName != null">
+                role_name = #{roleName},
+            </if>
+            <if test="roleNum != null">
+                role_num = #{roleNum},
+            </if>
+            <if test="roleDesc != null">
+                role_desc = #{roleDesc}
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <!--删除角色-->
+    <update id="deleteRole" parameterType="integer">
+        UPDATE role SET deleted_mark = 1
+        WHERE id = #{id}
+    </update>
+
+    <select id="getRoleById" parameterType="integer" resultMap="roleMap">
+        SELECT *
+        FROM role
+        WHERE id = #{id}
+    </select>
+
+    <select id="getAllRole" resultMap="roleMap">
+        SELECT *
+        FROM role
+        WHERE deleted_mark = 0
+    </select>
+</mapper>

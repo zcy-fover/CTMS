@@ -1,0 +1,22 @@
+.form-box {
+    margin: 30px 250px;
+}
+
+#modify-button {
+    width: 250px;
+    margin: 0 auto;
+}
+
+.img {
+    margin: 10px;
+    height: 100px;
+    position: relative;
+}
+
+.img > img {
+    margin: 0 auto;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 0; left: 0; bottom: 0; right: 0;
+}

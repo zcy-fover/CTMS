@@ -1,0 +1,16 @@
+.modify {
+    margin: 5% 0 0 0;
+    background-color: #cccccc;
+}
+
+.modify-box-body {
+    margin: 0 30% 0;
+    height: 400px;
+    border-radius: 5px;
+}
+.modify-box-msg{
+    text-align: center;
+    font-family: "Microsoft YaHei UI Light";
+    font-size: 20px;
+    padding-top: 20px;
+}

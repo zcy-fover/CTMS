@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.group.ctms.dao.AuditLogMapper">
+    <resultMap id="auditLogResultMap" type="AuditLog">
+        <result property="applicationId" column="application_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="username" column="user_name"/>
+        <result property="auditDate" column="audit_date"/>
+        <result property="auditType" column="audit_type"/>
+        <result property="auditResult" column="audit_result"/>
+        <result property="auditFeedback" column="audit_feedback"/>
+    </resultMap>
+
+    <select id="logList" resultMap="auditLogResultMap" parameterType="int">
+        SELECT * FROM audit_log WHERE application_id = #{applicationId}
+    </select>
+
+    <insert id="addAuditLog" parameterType="AuditLog">
+        INSERT INTO audit_log VALUES (
+            #{id, jdbcType=INTEGER},
+            #{applicationId, jdbcType=INTEGER},
+            #{userId, jdbcType=INTEGER},
+            #{username, jdbcType=VARCHAR},
+            Now(),
+            #{auditType, jdbcType=INTEGER},
+            #{auditResult, jdbcType=INTEGER},
+            #{auditFeedback, jdbcType=VARCHAR}
+        )
+    </insert>
+</mapper>

@@ -1,0 +1,48 @@
+.bodyBack{
+    background-image: url('../img/login-bg.jpg');
+    background-size:100% 100%;
+    background-repeat:no-repeat;
+}
+
+.login-box-body, .register-box-body {
+    margin: 50px 35% 0;
+    border-radius: 10px;
+    padding-bottom: 40px;
+
+}
+
+.login-box-body {
+    min-height: 250px;
+
+}
+
+.register-box-body {
+    min-height: 400px;
+}
+
+.four-row {
+    margin: 0 0 12px 0;
+    position: relative;
+}
+
+.four-row > a {
+    position: absolute;
+    right: 0;
+}
+
+.six-row {
+    margin: 12px 0;
+    position: relative;
+}
+
+.six-row > a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.login-logo{
+    padding-top: 80px;
+}

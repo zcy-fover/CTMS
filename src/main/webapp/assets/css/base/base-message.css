@@ -1,0 +1,90 @@
+body{
+    font-family: "Microsoft YaHei";
+}
+
+#message-modal button.btn-default {
+    background-color: #ffffff;
+    border-color: #ffffff;
+}
+
+#message-modal button.btn-default:hover {
+    border-color: #3c8dbc !important;
+    color: #3c8dbc !important;
+}
+
+#message-modal div.btn-group {
+    display: flex;
+}
+
+.control-sidebar>.tab-content {
+    padding: 10px 0;
+}
+
+.panel-group {
+    padding: 0;
+}
+
+.panel-group .panel {
+    border: 0;
+    border-radius: 0;
+    /*padding: 15px;*/
+}
+
+.panel-group .panel, .panel-default>.panel-heading {
+    background: #222d32;
+    color: #b8c7ce;
+}
+
+.panel-heading {
+    padding: 0;
+}
+
+/* 好友列表中的所有 Group 标签*/
+.panel.panel-default > a {
+    display: block;
+    padding: 10px 25px;
+    background: #34495f;
+    color: white;
+    border-left: 4px solid transparent;
+}
+
+.panel.panel-default > a:hover {
+     color: white;
+     background: #4e6d8d;
+     border-left-color: #0099FF;
+ }
+
+/* 好友列表中的好友 */
+.list-group-item {
+    background: #344951;
+    padding: 10px 25px;
+    color: white;
+    border-radius: 0 !important;
+    border-width: 0 4px !important;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+}
+
+.list-group-item:hover {
+    background: rgba(255,255,255,0.3);
+    border-left-color: #0099FF;
+    border-right-color: #0099FF;
+}
+
+/* 好友头像 */
+.list-group-item > img {
+    float: left;
+    width: 20px;
+    height: auto;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+/* 设置聊天条目最小 32 px，防止输入空字符后显示一条丑丑的短长带 */
+.direct-chat-text {
+    min-height: 32px;
+}
+
+/* 设置好友列表的消息数目提示方格之间的间距 */
+span.pull-right-container > small {
+    margin-right: 5px;
+}

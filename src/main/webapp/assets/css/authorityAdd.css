@@ -1,0 +1,15 @@
+.authority{
+    margin: 5% 0 0 0;
+    background-color: #cccccc;
+}
+.authority-box-body {
+    margin: 0 30% 0;
+    height: 460px;
+    border-radius: 5px;
+}
+.authority-box-msg{
+    text-align: center;
+    font-family: "Microsoft YaHei UI Light";
+    font-size: 20px;
+    padding-top: 20px;
+}

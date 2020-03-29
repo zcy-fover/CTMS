@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+       				    http://www.springframework.org/schema/context
+       				    http://www.springframework.org/schema/context/spring-context.xsd
+                        http://www.springframework.org/schema/mvc
+                        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!-- 自动扫描的包，使Spring支持自动检测组件，这里只扫描Controller -->
+    <context:component-scan base-package="com.group.ctms.controller"/>
+
+    <!-- 启用srping mvc注解 -->
+    <!-- <mvc:annotation-driven />开启设置可以替代 -->
+    <!-- <bean id="handlerMapping" class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
+    <bean id="handlerAdapter" class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/> -->
+    <mvc:annotation-driven/>
+    <!-- 静态资源 -->
+    <mvc:resources location="/assets/img/" mapping="/img/**"/>
+    <mvc:resources location="/assets/css/" mapping="/css/**"/>
+    <mvc:resources location="/assets/js/" mapping="/js/**"/>
+    <mvc:resources location="/assets/fonts/" mapping="/font/**"/>
+    <mvc:resources location="/assets/plugins/" mapping="/plugins/**"/>
+
+    <!-- 拦截器 -->
+     <mvc:interceptors>
+         <mvc:interceptor>
+             <mvc:mapping path="/**"/>
+             <mvc:exclude-mapping path="/"/>
+             <mvc:exclude-mapping path="/**/resources/**"/>
+             <mvc:exclude-mapping path="/**/config/**"/>
+             <mvc:exclude-mapping path="/assets/**"/>
+             <mvc:exclude-mapping path="/login"/>
+             <mvc:exclude-mapping path="/register"/>
+             <mvc:exclude-mapping path="/logOut"/>
+             <mvc:exclude-mapping path="/validate"/>
+             <bean class="com.group.ctms.interceptor.LoginInterceptor"/>
+         </mvc:interceptor>
+     </mvc:interceptors>
+
+    <!--视图解析器： 定义视图的前缀后缀 -->
+    <bean id="resourceView" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/frontPage/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <mvc:default-servlet-handler/>
+</beans>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.group.ctms.dao.DepartmentMapper">
+
+    <resultMap id="deptResultMap" type="Department">
+        <result property="deptName" column="dept_name"/>
+        <result property="responsiblePersonId" column="responsible_person_id"/>
+        <result property="deletedMark" column="deleted_mark"/>
+    </resultMap>
+
+    <select id="getDeptById" resultMap="deptResultMap" parameterType="int">
+        SELECT * FROM department WHERE id = #{id} AND deleted_mark != 1
+    </select>
+
+    <select id="getAllDept" resultMap="deptResultMap">
+        SELECT * FROM department WHERE deleted_mark != 1
+    </select>
+</mapper>
