@@ -16,7 +16,7 @@
         <!--统一配置spring的版本-->
         <spring.version>4.2.0.RELEASE</spring.version>
         <!--mybatis版本配置-->
-        <mybatis.version>3.2.6</mybatis.version>
+        <mybatis.version>3.5.6</mybatis.version>
         <!--日志版本配置-->
         <slf4j.version>1.7.7</slf4j.version>
         <log4j.version>1.2.17</log4j.version>
