@@ -14,7 +14,7 @@
 
     <properties>
         <!--统一配置spring的版本-->
-        <spring.version>4.2.0.RELEASE</spring.version>
+        <spring.version>6.0.0</spring.version>
         <!--mybatis版本配置-->
         <mybatis.version>3.2.6</mybatis.version>
         <!--日志版本配置-->
